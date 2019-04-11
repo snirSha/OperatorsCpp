@@ -12,7 +12,7 @@ Peleg Zborovsky 316486786
 
 The class consists of the operators:
 
-+ ,- ,+= ,-+, -(unary), +(unary), ++(both sides), --(both sides), <<, >>, <, >, <=, >=, ==, !=
+   + ,- ,+= ,-+, -(unary), +(unary), ++(both sides), --(both sides), <<, >>, <, >, <=, >=, ==, !=
 
 Elements: Time(sec,min,hour), Mass(g,kg,ton), Lenght(sm,m,km)
 
