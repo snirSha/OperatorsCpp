@@ -201,24 +201,31 @@ ariel::PhysicalNumber ariel::PhysicalNumber::operator--(int) // post
 }    
 ////////////////////////////////////////////////////////////////////////////////////
 //input output
-istream& ariel::operator>>(istream& in, ariel::PhysicalNumber &a) {
-    string s;
-    in>>a.data;
-    in>>s;
-    string s2=s.substr(1,s.length()-2);
-    if(s2=="cm")a.setUnit(CM);
-    else if(s2=="m")a.setUnit(M);
-    else if(s2=="km")a.setUnit(KM);
-    else if(s2=="sec")a.setUnit(SEC);
-    else if(s2=="min")a.setUnit(MIN);
-    else if(s2=="hour")a.setUnit(HOUR);
-    else if(s2=="g")a.setUnit(G);
-    else if(s2=="kg")a.setUnit(KG);
-    else if(s2=="ton")a.setUnit(TON);
-    else{
-        throw invalid_argument("Not a unit in this program");
-    } 
-    return in;
+istream& ariel::operator>>(istream& input, ariel::PhysicalNumber &a) {
+    string s,s2;
+    double temp;
+    input>>temp;
+    input>>s;
+    if(temp<0 ){
+        //nothing to return
+    }else if(s.front()!='[' || s.back()!=']'){
+            //nothing to return
+    }else{
+        s2=s.substr(1,s.length()-2);
+             if(s2=="cm")   {a.setUnit(CM);  a.setData(temp);}
+        else if(s2=="m")    {a.setUnit(M);   a.setData(temp);}
+        else if(s2=="km")   {a.setUnit(KM);  a.setData(temp);}
+        else if(s2=="sec")  {a.setUnit(SEC); a.setData(temp);}
+        else if(s2=="min")  {a.setUnit(MIN); a.setData(temp);}
+        else if(s2=="hour") {a.setUnit(HOUR);a.setData(temp);}
+        else if(s2=="g")    {a.setUnit(G);   a.setData(temp);}
+        else if(s2=="kg")   {a.setUnit(KG);  a.setData(temp);}
+        else if(s2=="ton")  {a.setUnit(TON); a.setData(temp);}
+        else {
+            //nothing to return
+        }
+    }
+    return input;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 ostream& ariel::operator<<(ostream &out,const ariel::PhysicalNumber &a) {
@@ -234,9 +241,9 @@ ostream& ariel::operator<<(ostream &out,const ariel::PhysicalNumber &a) {
         case 6: t= "g";break;
         case 7: t= "kg";break;
         case 8: t= "ton";break;
-        default: throw invalid_argument("noo"); 
+        default: throw invalid_argument("output wrong");
     }
-    out<< std::setprecision(6)<< a.data << "[" <<t<<"]";
+    out<<setprecision(6)<< a.data << "[" <<t<<"]";
     return out;
 }
 
