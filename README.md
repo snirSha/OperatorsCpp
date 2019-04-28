@@ -2,11 +2,11 @@
 
 ## Authors:
 
-Snir Shaharabani 204040687
+Snir Shaharabani 
 
-Amir Hoshen 305151292
+Amir Hoshen 
 
-Peleg Zborovsky 316486786
+Peleg Zborovsky 
 
 ## About the class:
 
